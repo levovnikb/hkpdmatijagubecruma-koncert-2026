@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="sr-Latn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#41283e">
+  <meta name="description" content="Koncert povodom Dana društva HKPD „Matija Gubec“ Ruma – 5. decembar 2026. u 19.00 časova. Digitalni program koncerta.">
+  <title>Koncert povodom Dana društva | HKPD „Matija Gubec“ Ruma</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#program">Preskoči na program koncerta</a>
+
+  <!-- HEADER: grb, naziv društva i navigacija ostaju preko hero sekcije. -->
+  <header class="site-header">
+    <a href="#pocetna" class="header-brand" aria-label="HKPD Matija Gubec Ruma – početna">
+      <img
+        src="images/Grb_drustva.png"
+        alt="Grb HKPD Matija Gubec"
+        class="header-logo"
+        width="80"
+        height="80"
+      >
+      <span class="header-brand-name">HKPD „Matija Gubec“<small>Ruma</small></span>
+    </a>
+
+    <nav class="header-nav" aria-label="Glavna navigacija">
+      <a href="#program">Program</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- DESKTOP: slika desno. MOBILNI: ceo poster je pozadina hero sekcije. -->
+    <section id="pocetna" class="hero" aria-labelledby="hero-title">
+      <div class="hero-layout">
+        <div class="hero-content">
+          <p class="eyebrow">HKPD „Matija Gubec“ · Ruma</p>
+
+          <h1 id="hero-title">Koncert <em>povodom Dana društva</em></h1>
+
+          <div class="event-details" aria-label="Podaci o koncertu">
+            <div class="event-detail">
+              <span class="detail-label">Datum</span>
+              <strong id="event-date">5. decembar 2026.</strong>
+            </div>
+            <div class="event-detail">
+              <span class="detail-label">Vreme</span>
+              <strong id="event-time">19.00 časova</strong>
+            </div>
+            <div class="event-detail">
+              <span class="detail-label">Mesto</span>
+              <strong id="event-venue">Velika dvorana Kulturnog centra Ruma</strong>
+            </div>
+          </div>
+
+          <a class="primary-link" href="#program">
+            <span>Program koncerta</span>
+            <span class="button-arrow" aria-hidden="true">↓</span>
+          </a>
+        </div>
+
+        <div class="hero-image" aria-hidden="true">
+          <img src="images/program_2026_pc.png" alt="" width="800" height="800" fetchpriority="high">
+        </div>
+      </div>
+    </section>
+
+    <!-- ODBROJAVANJE: pre koncerta / koncert u toku / zahvalnica. -->
+    <section class="countdown-section" aria-label="Vreme do koncerta">
+      <div id="concert-countdown" class="concert-countdown">
+        <h2 class="countdown-heading">Do početka koncerta ostalo je</h2>
+
+        <div id="countdown-timer" class="countdown-timer" role="timer" aria-live="off">
+          <div class="time-unit"><span id="days">00</span><small>dana</small></div>
+          <div class="time-unit"><span id="hours">00</span><small>sati</small></div>
+          <div class="time-unit"><span id="minutes">00</span><small>minuta</small></div>
+          <div class="time-unit"><span id="seconds">00</span><small>sekundi</small></div>
+        </div>
+
+        <p id="concert-status" class="concert-status" role="status" aria-live="polite" hidden></p>
+      </div>
+    </section>
+
+    <!-- Tačke se generišu iz niza 'tacke' u script.js. -->
+    <section id="program" class="program-section section-shell" aria-labelledby="program-title">
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">Redosled nastupa</p>
+          <h2 id="program-title">Program <em>večeri</em></h2>
+        </div>
+        <span class="program-count" id="program-count" aria-live="polite"></span>
+      </div>
+      <div class="program-list" id="program-list" aria-label="Koncertne tačke"></div>
+      <p class="program-note">Program je informativnog karaktera i može biti izmenjen.</p>
+    </section>
+
+    <!-- O društvu: sajt + Facebook + Instagram + YouTube. -->
+    <section id="o-nama" class="about-section" aria-labelledby="about-title">
+      <div class="society-social section-shell">
+        <p class="section-kicker">HKPD „Matija Gubec“ · Ruma</p>
+        <h2 id="about-title">Pratite naš <em>rad</em></h2>
+        <p class="social-intro">
+          Za više informacija o našem radu, nastupima i budućim događajima
+          posetite našu internet stranicu i zapratite nas na društvenim mrežama.
+        </p>
+
+        <div class="social-links">
+          <a href="https://matija-gubec.org.rs/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Internet stranica HKPD Matija Gubec – otvara se u novoj kartici">
+            <span class="social-icon-area"><img src="images/Grb_drustva.png" alt="" width="90" height="90" loading="lazy"></span>
+            <span class="social-label">Sajt</span>
+          </a>
+
+          <a href="https://www.facebook.com/p/HKPD-Matija-Gubec-Ruma-61575437352496/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Facebook društva – otvara se u novoj kartici">
+            <span class="social-icon-area">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.23.2 2.23.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.77l-.44 2.89h-2.33v6.99A10 10 0 0 0 22 12z"/></svg>
+            </span>
+            <span class="social-label">Facebook</span>
+          </a>
+
+          <a href="https://www.instagram.com/hkpd.matijagubec.ruma/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram društva – otvara se u novoj kartici">
+            <span class="social-icon-area">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="2" y="2" width="20" height="20" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="18" cy="6" r="1.2"/></svg>
+            </span>
+            <span class="social-label">Instagram</span>
+          </a>
+
+          <a href="https://www.youtube.com/channel/UCMsNRLsUPMcm7ULCvulLlPw" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="YouTube društva – otvara se u novoj kartici">
+            <span class="social-icon-area">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="2" y="5" width="20" height="14" rx="4"/><path d="M10 8.5 16 12 10 15.5Z" fill="#361f35"/></svg>
+            </span>
+            <span class="social-label">YouTube</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>© HKPD „Matija Gubec“ · Ruma</span>
+    <span> Realizacija: zvanična stranica
+    <a href="https://www.instagram.com/hkpd.matijagubec.ruma/"
+       target="_blank" rel="noopener noreferrer">
+      @hkpd.matijagubec.ruma
+    </a>
+  </span>
+    <a href="#pocetna">Nazad na vrh ↑</a>
+  </footer>
+</body>
+</html>

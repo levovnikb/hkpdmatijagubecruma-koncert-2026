@@ -1,0 +1,471 @@
+/* ================================================
+   HKPD „Matija Gubec“ – program koncerta, 2026.
+   Jedan izvor pravila: osnova, desktop, tablet, telefon.
+   ================================================ */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap');
+
+:root {
+  --dark: #241328;
+  --plum: #4b244c;
+  --paper: #fbf6f4;
+  --ink: #2d2330;
+  --muted: #746676;
+  --gold: #e7c6a8;
+  --line: rgba(79, 43, 78, .16);
+  --serif: 'Playfair Display', Georgia, serif;
+  --sans: 'DM Sans', Arial, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 1.5rem; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 1rem/1.6 var(--sans); }
+a { color: inherit; text-decoration: none; }
+img, svg { display: block; }
+[hidden] { display: none !important; }
+:focus-visible { outline: 3px solid var(--gold); outline-offset: 4px; }
+.skip-link { position: absolute; top: -5rem; left: 1rem; z-index: 100; padding: .5rem 1rem; background: white; color: var(--dark); }
+.skip-link:focus { top: 1rem; }
+.section-shell { width: min(1100px, calc(100% - 3rem)); margin-inline: auto; }
+
+/* HEADER */
+.site-header {
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 20;
+  min-height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 1rem clamp(1.5rem, 4vw, 5rem);
+  color: white;
+}
+.header-brand { display: flex; align-items: center; gap: 1.2rem; min-width: 0; }
+.header-logo { width: 80px; height: 80px; object-fit: contain; flex: 0 0 auto; }
+.header-brand-name { display: flex; flex-direction: column; gap: .2rem; font-size: 1.35rem; font-weight: 600; line-height: 1.2; }
+.header-brand-name small { font-size: .8rem; font-weight: 400; letter-spacing: .13em; color: var(--gold); }
+.header-nav { display: flex; align-items: center; gap: clamp(1.25rem, 3vw, 2.8rem); white-space: nowrap; font-size: 1rem; }
+.header-nav a:hover, .site-footer a:hover { text-decoration: underline; text-underline-offset: 5px; }
+
+/* HERO: DESKTOP */
+.hero {
+  position: relative;
+  min-height: max(760px, 100svh);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  isolation: isolate;
+  color: #fff;
+  background: radial-gradient(ellipse at 78% 47%, #6e3c68 0%, transparent 42%),
+              linear-gradient(130deg, #1e1025 4%, #432344 58%, #251327 100%);
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(90deg, rgba(20, 9, 24, .18), transparent 80%);
+}
+.hero-layout {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.12fr);
+  align-items: center;
+  gap: clamp(1rem, 4vw, 4rem);
+  width: min(1370px, calc(100% - 8vw));
+  margin: 7.5rem auto 3rem;
+}
+.hero-content { min-width: 0; }
+.eyebrow, .section-kicker { margin: 0; font-size: .75rem; font-weight: 700; letter-spacing: .17em; text-transform: uppercase; }
+.eyebrow { margin-bottom: 1.8rem; color: var(--gold); }
+h1, h2, h3 { font-family: var(--serif); font-weight: 500; }
+.hero h1 { margin: 0; font-size: clamp(4.2rem, 7.4vw, 8rem); line-height: 1.02; letter-spacing: -.05em; }
+.hero h1 em { display: block; margin-top: .45em; color: var(--gold); font-size: .35em; font-weight: 500; line-height: 1.2; letter-spacing: 0; }
+.event-details { display: flex; flex-wrap: wrap; gap: 1.15rem 1.8rem; margin-top: 2.5rem; }
+.event-detail { display: flex; flex-direction: column; gap: .15rem; min-width: 0; }
+.detail-label { color: #dfb9cb; font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+.event-detail strong { font-size: 1rem; font-weight: 500; line-height: 1.4; }
+.hero .primary-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.3rem;
+  min-height: 70px;
+  margin-top: 2.5rem;
+  padding: 1.05rem 2.4rem;
+  border-radius: 999px;
+  background: #f4ddcf;
+  color: var(--dark);
+  font-size: 1.22rem;
+  font-weight: 700;
+  line-height: 1.2;
+  transition: background .2s ease, transform .2s ease, box-shadow .2s ease;
+}
+.hero .primary-link:hover { background: #fff; transform: translateY(-3px); box-shadow: 0 12px 30px rgba(0, 0, 0, .2); }
+.hero .button-arrow { font-size: 1.55rem; line-height: 1; }
+.hero-image { display: flex; align-items: center; justify-content: center; min-width: 0; }
+.hero-image img { width: 100%; height: auto; max-height: min(75svh, 740px); object-fit: contain; }
+
+/* ODBROJAVANJE */
+.countdown-section { background: var(--paper); }
+.concert-countdown { width: min(850px, calc(100% - 2rem)); margin-inline: auto; padding: clamp(3.6rem, 7vw, 5.5rem) 0; text-align: center; }
+.countdown-heading { margin: 0 0 1.75rem; color: var(--plum); font: 600 clamp(1rem, 2.4vw, 1.25rem)/1.4 var(--sans); letter-spacing: .13em; text-transform: uppercase; }
+.countdown-timer { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(.4rem, 2vw, 1.2rem); }
+.time-unit { display: flex; flex-direction: column; align-items: center; justify-content: center; min-width: 0; padding: 1.3rem .3rem; border: 1px solid #d9c6d3; border-radius: 14px; background: #f0e5ed; }
+.time-unit span { color: var(--plum); font-size: clamp(2rem, 5vw, 4rem); font-weight: 600; font-variant-numeric: tabular-nums; line-height: 1.2; }
+.time-unit small { color: #71516b; margin-top: .4rem; font-size: clamp(.65rem, 1.3vw, .85rem); font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
+.concert-status { margin: 0; padding: 1.2rem .5rem; color: var(--plum); font: 600 clamp(1.5rem, 4vw, 2.9rem)/1.3 var(--serif); animation: appear .7s ease both; }
+@keyframes appear { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+/* PROGRAM */
+.program-section { padding: 2.5rem 0 6rem; }
+.section-heading { display: flex; justify-content: space-between; align-items: end; gap: 1rem; margin-bottom: 2rem; }
+.section-kicker { color: #966380; margin-bottom: .6rem; }
+h2 { margin: 0; font-size: clamp(2.3rem, 5vw, 4.2rem); line-height: 1.15; letter-spacing: -.03em; }
+h2 em { color: #8b6089; }
+.program-count { color: var(--muted); font-size: .9rem; white-space: nowrap; }
+.program-list { border-top: 1px solid var(--line); }
+.program-item { display: grid; grid-template-columns: 3rem minmax(0, 1fr) auto; gap: 1rem; align-items: center; border-bottom: 1px solid var(--line); padding: 1.35rem .25rem; }
+.program-number { color: #986f8f; font: 500 1.45rem var(--serif); }
+.program-title { margin: 0 0 .2rem; font: 500 clamp(1.2rem, 2.5vw, 1.7rem)/1.3 var(--serif); }
+.program-performer { margin: 0; color: var(--muted); font-size: .94rem; }
+.program-badge { border: 1px solid var(--line); border-radius: 100px; padding: .35rem .7rem; color: #715b70; font-size: .7rem; letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; }
+.program-note { margin-top: 1.6rem; color: var(--muted); font-size: .82rem; }
+
+/* O DRUŠTVU I DRUŠTVENE MREŽE */
+.about-section { background: linear-gradient(145deg, #311934, #542d50); color: white; padding: clamp(4.5rem, 8vw, 7rem) 0; }
+.society-social { max-width: 850px; text-align: center; }
+.about-section .section-kicker { color: var(--gold); }
+.about-section h2 em { color: var(--gold); }
+.social-intro { max-width: 650px; margin: 1.4rem auto 2.8rem; color: #eddfe9; font-size: 1.05rem; line-height: 1.8; }
+.social-links { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(.4rem, 2vw, 2rem); width: min(750px, 100%); margin: 0 auto; }
+.social-link { display: grid; grid-template-rows: 100px auto; justify-items: center; align-items: center; gap: .8rem; min-width: 0; color: var(--gold); text-align: center; transition: transform .25s ease, color .25s ease; }
+.social-icon-area { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; }
+.social-link img { width: 90px; height: 90px; object-fit: contain; }
+.social-link svg { width: 65px; height: 65px; fill: currentColor; }
+.social-label { align-self: start; font-size: .95rem; font-weight: 500; }
+.social-link:hover { transform: translateY(-5px); color: #fff; }
+
+/* FOOTER */
+.site-footer { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; padding: 2rem clamp(1.5rem, 4vw, 5rem); background: #1d1022; color: #e9dce7; font-size: .82rem; }
+
+/* TABLET */
+@media (max-width: 980px) and (min-width: 641px) {
+  .site-header { min-height: 90px; padding: .9rem 1.6rem; }
+  .header-logo { width: 65px; height: 65px; }
+  .header-brand-name { font-size: 1.1rem; }
+  .hero { min-height: 720px; }
+  .hero-layout { width: calc(100% - 3rem); grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .hero h1 { font-size: clamp(3.5rem, 7.6vw, 5.8rem); }
+  .hero-image img { max-height: 500px; }
+  .hero .primary-link { font-size: 1rem; min-height: 60px; padding: .85rem 1.4rem; }
+}
+
+/* ================================================
+   TELEFON: originalni poster zauzima celu hero sekciju.
+   Header / centriran naslov i podaci / dugme na dnu.
+   ================================================ */
+@media (max-width: 640px) {
+   .site-header {
+    min-height: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: .5rem;
+    padding: .75rem 1rem;
+    background: transparent;
+  }
+
+  .header-brand {
+    align-self: center;
+    gap: .5rem;
+    min-width: 0;
+  }
+
+  .header-logo {
+    width: 48px;
+    height: 48px;
+  }
+
+  .header-brand-name {
+    font-size: clamp(.75rem, 3.5vw, 1rem);
+  }
+
+  .header-brand-name small {
+    font-size: .7rem;
+  }
+
+  .header-nav {
+    justify-content: flex-end;
+    gap: 0;
+    font-size: .86rem;
+    flex-shrink: 0;
+  }
+
+  .header-nav a {
+    padding: .4rem .2rem;
+  }
+
+  .hero {
+    min-height: max(760px, 100svh);
+    display: block;
+    padding: 0 1rem;
+    background-color: #623957;
+    background-image: url("images/program_2026_mt.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+  }
+  /* Tamni sloj samo u zoni naslova i preko dugmeta; poster ostaje vidljiv. */
+  .hero::after {
+    z-index: 0;
+    background: linear-gradient(to bottom,
+      rgba(40, 15, 38, .28) 0%,
+      rgba(40, 15, 38, .22) 26%,
+      rgba(40, 15, 38, .03) 48%,
+      rgba(40, 15, 38, .00) 72%,
+      rgba(40, 15, 38, .34) 100%);
+  }
+  .hero-layout {
+    z-index: 1;
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: max(760px, 100svh);
+    margin: 0;
+  }
+  .hero-layout .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    min-height: max(760px, 100svh);
+    padding: 7.45rem 0 max(4.4rem, env(safe-area-inset-bottom));
+    text-align: center;
+  }
+  .hero-image, .eyebrow { display: none; }
+ 
+/* VEĆI NASLOV KONCERTA */
+
+.hero h1 {
+  width: 100%;
+  margin: 0;
+  font-size: clamp(4.1rem, 17vw, 5.8rem);
+  line-height: 1;
+  text-align: center;
+}
+
+.hero h1 em {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.38em;
+  line-height: 1.25;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+ 
+/* DATUM, VREME I MESTO */
+
+.event-details {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+
+  column-gap: 0.6rem;
+  row-gap: 0.45rem;
+
+  width: min(100%, 350px);
+  margin: auto auto 0;
+  padding-top: 1rem;
+  text-align: center;
+
+  text-shadow: 0 2px 8px rgba(30, 10, 30, 0.4);
+}
+
+.event-detail {
+  display: block;
+  min-width: 0;
+  max-width: 100%;
+}
+
+/* SAKRIVAMO NATPISE */
+
+.detail-label {
+  display: none;
+}
+
+/* DATUM I VREME */
+
+.event-detail strong {
+  font-size: clamp(0.82rem, 3.5vw, 0.95rem);
+  font-weight: 600;
+  line-height: 1.5;
+  color: #ffffff;
+}
+
+/* TAČKA IZMEĐU DATUMA I VREMENA */
+
+.event-detail:first-child::after {
+  content: "•";
+  margin-left: 0.6rem;
+  color: #e7c6a8;
+}
+
+/* MESTO ISPOD DATUMA I VREMENA */
+
+.event-detail:last-child {
+  flex: 0 0 100%;
+  margin-top: 0.15rem;
+}
+
+.event-detail:last-child strong {
+  display: block;
+  max-width: 320px;
+  margin: 0 auto;
+
+  font-size: 0.86rem;
+  font-weight: 400;
+  line-height: 1.4;
+  color: #f3dcc9;
+}
+
+  .hero .primary-link {
+    margin-top: 0.9rem;
+    width: min(100%, 370px);
+    min-height: 58px;
+    padding: .9rem 1.2rem;
+    gap: 1rem;
+    font-size: 1.08rem;
+    box-shadow: 0 10px 25px rgba(20, 9, 20, .18);
+  }
+  .hero .button-arrow { font-size: 1.4rem; }
+
+  .section-shell { width: calc(100% - 2.2rem); }
+  .concert-countdown { padding: 3rem 0; }
+  .countdown-heading { font-size: .84rem; letter-spacing: .1em; }
+  .time-unit { padding: 1rem .15rem; border-radius: 10px; }
+  .time-unit span { font-size: clamp(1.5rem, 7vw, 2.4rem); }
+  .time-unit small { font-size: .61rem; }
+  .section-heading { flex-direction: column; align-items: start; }
+  .program-section { padding: 2rem 0 4.5rem; }
+  .program-item { grid-template-columns: 2.3rem minmax(0, 1fr); gap: .6rem; padding: 1.1rem 0; }
+  .program-badge { grid-column: 2; justify-self: start; }
+  .social-intro { font-size: .98rem; }
+  .social-links { gap: .3rem; }
+  .social-link { grid-template-rows: 74px auto; gap: .45rem; }
+  .social-link img { width: 70px; height: 70px; }
+  .social-link svg { width: 47px; height: 47px; }
+  .social-label { font-size: clamp(.65rem, 2.9vw, .78rem); }
+  .site-footer { flex-direction: column; }
+}
+
+/* Kratki telefoni: omogućavamo veću visinu hero sekcije bez sudaranja. */
+@media (max-width: 640px) and (max-height: 700px) {
+  .hero, .hero-layout, .hero-layout .hero-content { min-height: 755px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+/* ==========================================
+   PC VERZIJA - PROSIRENA HERO SEKCIJA
+   ========================================== */
+
+@media (min-width: 981px) {
+
+  /* MANJE PRAZNOG PROSTORA SA STRANA */
+
+  .hero-layout {
+    width: min(1800px, calc(100% - 10vw));
+
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(0, 1.15fr);
+
+    gap: clamp(1rem, 2.2vw, 2.8rem);
+  }
+
+  /* VECI NASLOV KONCERT */
+
+  .hero h1 {
+    font-size: clamp(5rem, 8.3vw, 8.7rem);
+    line-height: 1.02;
+  }
+
+  /* VECI PODNASLOV */
+
+  .hero h1 em {
+    font-size: 0.37em;
+    margin-top: 0.4em;
+  }
+
+  /* VECI PODACI O KONCERTU */
+
+  .event-detail strong {
+    font-size: 1.12rem;
+  }
+
+  .detail-label {
+    font-size: 0.78rem;
+  }
+
+  /* VECI TASTER ZA PROGRAM */
+
+  .hero .primary-link {
+    min-height: 82px;
+    padding: 1.25rem 3rem;
+    font-size: 1.38rem;
+    gap: 1.5rem;
+  }
+
+  .hero .button-arrow {
+    font-size: 1.9rem;
+  }
+
+  /* VECA SLIKA RUKU I NOTNOG ZAPISA */
+
+  .hero-image img {
+    width: 100%;
+    max-height: min(86svh, 900px);
+    object-fit: contain;
+  }
+
+  /* HEADER USKLADJEN SA NOVOM SIRINOM */
+
+  .site-header {
+    padding-left: 2.5vw;
+    padding-right: 2.5vw;
+  }
+
+}
+/* PRIVREMENI PRIKAZ PROGRAMA */
+
+.program-soon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 240px;
+  margin: 0;
+
+  font-family: var(--serif);
+  font-size: clamp(2.8rem, 7vw, 5rem);
+  font-weight: 500;
+  letter-spacing: 0.16em;
+
+  color: var(--plum);
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .program-soon {
+    min-height: 180px;
+  }
+}
