@@ -469,3 +469,134 @@ h2 em { color: #8b6089; }
     min-height: 180px;
   }
 }
+
+/* KONAČNI PROGRAM – dva dela i saradnici */
+.program-group-heading {
+  padding: 1.6rem 1.5rem;
+  background: linear-gradient(130deg, #311934, #542d50);
+  color: white;
+  border-radius: 12px;
+  margin: 1.4rem 0 .3rem;
+}
+.program-group + .program-group { margin-top: 2.7rem; }
+.program-group-kicker {
+  margin: 0 0 .35rem;
+  color: var(--gold);
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+.program-group-title { margin: 0; font-size: clamp(1.55rem, 3.5vw, 2.5rem); line-height: 1.2; }
+.program-item.program-item-full { grid-template-columns: 3rem minmax(0, 1fr); align-items: start; }
+.program-item-full .program-number { padding-top: .12rem; }
+.program-author { margin: 0 0 .25rem; color: var(--plum); font-size: .88rem; font-weight: 600; }
+.program-item-full .program-title { margin-bottom: .4rem; overflow-wrap: break-word; }
+.program-item-full .program-performer + .program-performer { margin-top: .15rem; }
+.program-credits { margin-top: 3rem; padding: clamp(1.2rem, 3vw, 2rem); border: 1px solid var(--line); border-radius: 12px; background: #f0e5ed; }
+.program-credits-title { margin: 0 0 1rem; color: var(--plum); font-size: clamp(1.5rem, 3vw, 2.1rem); }
+.program-credits-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.2rem 2rem; margin: 0; }
+.program-credit-role { color: var(--muted); font-size: .84rem; line-height: 1.45; }
+.program-credit-name { margin: .2rem 0 0; color: var(--ink); font-weight: 600; overflow-wrap: break-word; }
+@media (max-width: 640px) {
+  .program-group-heading { padding: 1.15rem 1rem; border-radius: 10px; }
+  .program-item.program-item-full { grid-template-columns: 2.3rem minmax(0, 1fr); }
+  .program-group + .program-group { margin-top: 2.2rem; }
+  .program-credits-list { grid-template-columns: 1fr; }
+}
+
+/* Izdvojena programska tačka – bez rednog broja i dodatnog naslova */
+.program-highlight {
+  margin: 2.2rem 0 0;
+  padding: clamp(1.6rem, 4vw, 2.8rem) 1.2rem;
+  background: linear-gradient(130deg, #311934, #542d50);
+  border-radius: 12px;
+  text-align: center;
+  color: #fbf6f4;
+}
+.program-highlight .program-author { color: var(--gold); margin-bottom: .45rem; }
+.program-highlight .program-title {
+  color: #fbf6f4;
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  margin: 0 0 .65rem;
+  overflow-wrap: break-word;
+}
+.program-highlight .program-performer { color: #eddfe9; }
+
+/* Svaka programska tačka je samostalna kartica. */
+.program-group .program-item.program-item-full {
+  margin: .8rem 0 0;
+  padding: 1.25rem 1.4rem;
+  gap: 1rem;
+  border: 1px solid rgba(79, 43, 78, .19);
+  border-radius: 12px;
+  background: #fffdf9;
+  box-shadow: 0 3px 10px rgba(49, 25, 52, .045);
+  align-items: start;
+}
+.program-group .program-item-full .program-number {
+  display: grid;
+  place-items: center;
+  width: 2.65rem;
+  height: 2.65rem;
+  padding: 0;
+  border-radius: 9px;
+  background: #f0e5ed;
+  color: var(--plum);
+  font-size: 1.25rem;
+  line-height: 1;
+}
+.program-group .program-item-full > div { min-width: 0; }
+.program-group .program-item-full .program-title:last-child { margin-bottom: 0; }
+@media (max-width: 640px) {
+  .program-group .program-item.program-item-full {
+    grid-template-columns: 2.15rem minmax(0, 1fr);
+    padding: 1rem .85rem;
+    gap: .75rem;
+    margin-top: .7rem;
+    border-radius: 10px;
+  }
+  .program-group .program-item-full .program-number {
+    width: 2.15rem;
+    height: 2.15rem;
+    font-size: 1.08rem;
+    border-radius: 7px;
+  }
+}
+
+
+/* Obaveštenje o humanitarnom karakteru koncerta. */
+.charity-notice {
+  display: flex;
+  align-items: center;
+  gap: clamp(.85rem, 2.5vw, 1.5rem);
+  padding: clamp(1rem, 3vw, 1.7rem);
+  margin: 0 0 2rem;
+  border: 1px solid rgba(79, 43, 78, .22);
+  border-radius: 12px;
+  background: #f0e5ed;
+  color: var(--plum);
+}
+.charity-icon {
+  width: 2.6rem;
+  height: 2.6rem;
+  flex: 0 0 auto;
+}
+.charity-notice > div { min-width: 0; }
+.charity-notice h3 {
+  font-size: clamp(1.25rem, 2.7vw, 1.85rem);
+  line-height: 1.25;
+  margin: 0 0 .4rem;
+  color: var(--plum);
+}
+.charity-notice p {
+  margin: 0;
+  color: var(--ink);
+  line-height: 1.55;
+  overflow-wrap: break-word;
+}
+@media (max-width: 640px) {
+  .charity-notice { align-items: flex-start; border-radius: 10px; }
+  .charity-icon { width: 1.8rem; height: 1.8rem; }
+  .charity-notice p { font-size: .94rem; }
+}
